@@ -1,0 +1,21 @@
+.a-btn {
+  text-align: center;
+  color: white;
+}
+.a-btn:hover {
+  background-color: white;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.main-component {
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .main-component {
+    min-height: auto;
+  }
+}

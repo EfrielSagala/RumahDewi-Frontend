@@ -1,0 +1,51 @@
+.fit-img {
+  object-fit: contain;
+}
+
+.card-style {
+  width: 10rem;
+}
+
+.carousel {
+  width: 75%;
+}
+
+.carousel-img {
+  height: 600px;
+  /* object-position: 0 5%; */
+}
+
+.card-img {
+  object-fit: cover;
+  object-position: 0 20%;
+}
+
+.lists-hover:hover {
+  background-color: rgb(182, 217, 247);
+}
+
+.aturan {
+  width: 75%;
+}
+
+/* LG */
+@media (max-width: 992px) {
+  .carousel {
+    width: 100%;
+  }
+  .aturan {
+    width: 100%;
+  }
+}
+/* MD */
+@media (max-width: 768px) {
+  .card-style {
+    min-width: 18rem;
+    height: 26rem;
+  }
+
+  .carousel-img {
+    height: 300px;
+    object-position: initial;
+  }
+}

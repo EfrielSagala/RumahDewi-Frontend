@@ -1,0 +1,49 @@
+.fit-img {
+  object-fit: cover;
+}
+
+.card-style {
+  min-width: 22rem;
+  height: 28rem;
+}
+
+.carousel {
+  width: 75%;
+}
+
+.carousel-img {
+  height: 600px;
+  /* object-position: 0 5%; */
+}
+
+.card-img {
+  object-fit: cover;
+  object-position: 0 20%;
+}
+
+.card-home {
+  justify-content: center;
+}
+
+/* LG */
+@media (max-width: 992px) {
+  .carousel {
+    width: 100%;
+  }
+}
+/* MD */
+@media (max-width: 768px) {
+  .card-style {
+    min-width: 18rem;
+    height: 26rem;
+  }
+
+  .carousel-img {
+    height: 300px;
+    object-position: initial;
+  }
+
+  .card-home {
+    justify-content: left;
+  }
+}

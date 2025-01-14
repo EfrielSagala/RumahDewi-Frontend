@@ -1,0 +1,9 @@
+.main-component {
+  min-height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .main-component {
+    min-height: auto;
+  }
+}
