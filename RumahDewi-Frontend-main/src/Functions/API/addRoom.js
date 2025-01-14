@@ -4,7 +4,7 @@ import axios from "axios";
 export const addRoom = async (roomData, token) => {
   try {
     const response = await axios.post(
-      "http://localhost:4001/api/v1/admin/rooms", 
+      "http://localhost:4001/api/v1/rooms", 
       roomData, 
       {
         headers: {
