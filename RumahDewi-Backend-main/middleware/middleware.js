@@ -123,41 +123,19 @@ module.exports = {
             data: null,
           });
         }
-      } else {
-        return res.status(401).json({
-          status: 401,
-          message: "Authentication failed, please login.",
-          data: null,
-        });
-      }
+      }   
     } catch (error) {
       next(error);
     }
   },
 
-  // Middleware untuk mengecek apakah user memiliki role "USER"
-  isUser: (req, res, next) => {
-    try {
-      if (req.user_data.role !== "USER") {
-        return res.status(401).json({
-          status: 401,
-          message: "Access denied for User. You don't have permission to the resource",
-          data: null,
-        });
-      }
-      next();
-    } catch (error) {
-      next(error);
-    }
-  },
-
-  // Middleware untuk mengecek apakah user memiliki role "ADMIN"
+  // Middleware untuk mengecek apakah user memiliki role "ADMIN" sebelum menambah kamar
   isAdmin: (req, res, next) => {
     try {
       if (req.user_data.role !== "ADMIN") {
         return res.status(401).json({
           status: 401,
-          message: "Access denied for Admin. You don't have permission to the resource",
+          message: "Access denied for Admin. You don't have permission to add rooms.",
           data: null,
         });
       }
@@ -189,5 +167,31 @@ module.exports = {
 
     // Lanjutkan ke controller jika validasi berhasil
     next();
+  },
+
+  // Route handler untuk menambah kamar yang hanya bisa diakses oleh admin
+  addRoom: async (req, res) => {
+    try {
+      const { no_room, monthly_price } = req.body;
+
+      const room = await prisma.room.create({
+        data: {
+          no_room,
+          monthly_price,
+        },
+      });
+
+      res.status(201).json({
+        status: 201,
+        message: "Room added successfully",
+        data: room,
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: 500,
+        message: "Error adding room.",
+        data: null,
+      });
+    }
   },
 };

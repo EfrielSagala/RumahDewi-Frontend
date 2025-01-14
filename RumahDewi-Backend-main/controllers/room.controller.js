@@ -60,7 +60,7 @@ exports.getRooms = async (req, res, next) => {
   try {
     await checkRooms(req);
 
-    let rooms = await prisma.room.findMany({
+    const rooms = await prisma.room.findMany({
       orderBy: {
         no_room: "asc",
       },
@@ -69,9 +69,7 @@ exports.getRooms = async (req, res, next) => {
     return res.status(200).json({
       status: true,
       message: "Berhasil mendapatkan data kamar",
-      data: {
-        rooms,
-      },
+      data: { rooms },
     });
   } catch (error) {
     next(error);
@@ -83,52 +81,59 @@ exports.getUserRoom = async (req, res, next) => {
   try {
     await checkRooms(req);
 
-    let user = await prisma.user.findUnique({
-      where: {
-        id: req.user_data.id,
-      },
-      include: {
-        room: true,
-      },
+    const user = await prisma.user.findUnique({
+      where: { id: req.user_data.id },
+      include: { room: true },
     });
+
+    if (!user) {
+      return res.status(404).json({
+        status: false,
+        message: "Pengguna tidak ditemukan.",
+      });
+    }
 
     delete user.password;
 
     return res.status(200).json({
       status: true,
       message: "Berhasil mendapatkan data kamar",
-      data: {
-        user_room: user,
-      },
+      data: { user_room: user },
     });
   } catch (error) {
     next(error);
   }
 };
 
-// Fungsi untuk menambahkan kamar
+// Controller to add a room
 exports.addRoom = async (req, res, next) => {
-  const { no_room, monthly_price } = req.body;
+  const { no_room, monthly_price, status } = req.body;
 
-  if (!no_room || !monthly_price) {
-    return res.status(400).json({ status: false, message: "Nomor kamar dan harga per bulan harus diisi" });
+  // Check if required fields are provided
+  if (!no_room || !monthly_price || !status) {
+    return res.status(400).json({
+      status: false,
+      message: "Nomor kamar, harga per bulan, dan status harus diisi",
+    });
   }
 
   try {
-    // Memastikan nomor kamar belum ada di database
-    const existingRoom = await prisma.room.findUnique({
-      where: { no_room },
-    });
+    // Check if the room number already exists in the database
+    const existingRoom = await prisma.room.findUnique({ where: { no_room } });
 
     if (existingRoom) {
-      return res.status(400).json({ status: false, message: "Nomor kamar sudah terdaftar" });
+      return res.status(400).json({
+        status: false,
+        message: "Nomor kamar sudah terdaftar",
+      });
     }
 
-    // Menambah kamar baru
+    // Add the new room
     const newRoom = await prisma.room.create({
       data: {
         no_room,
-        monthly_price,
+        monthly_price: parseInt(monthly_price, 10), // Ensure correct data type
+        status,
       },
     });
 
@@ -138,9 +143,12 @@ exports.addRoom = async (req, res, next) => {
       data: newRoom,
     });
   } catch (error) {
+    // Log error and send detailed message to the client
+    console.error("Error adding room:", error);
     next(error);
   }
 };
+
 
 // Fungsi untuk memperbarui status kamar
 exports.updateRoomStatus = async (req, res, next) => {
@@ -159,9 +167,7 @@ exports.updateRoomStatus = async (req, res, next) => {
     }
 
     // Cari kamar berdasarkan ID
-    const room = await prisma.room.findUnique({
-      where: { id: id }, // Gunakan ID langsung, jika menggunakan UUID
-    });
+    const room = await prisma.room.findUnique({ where: { id: parseInt(id, 10) } });
 
     if (!room) {
       return res.status(404).json({
@@ -172,19 +178,16 @@ exports.updateRoomStatus = async (req, res, next) => {
 
     // Perbarui status kamar
     const updatedRoom = await prisma.room.update({
-      where: { id: id }, // Gunakan ID langsung
+      where: { id: parseInt(id, 10) },
       data: { status },
     });
 
-    // Kembalikan response sukses
     return res.status(200).json({
       status: true,
       message: "Status kamar berhasil diubah.",
       data: updatedRoom,
     });
   } catch (error) {
-    // Tangani error
     next(error);
   }
 };
-

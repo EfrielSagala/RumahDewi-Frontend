@@ -4,6 +4,7 @@
   "private": true,
   "prisma": {
     "seed": "node prisma/seeders/seed.js"
+    
   },
   "scripts": {
     "start": "node api/index.js",
@@ -11,7 +12,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.5.1",
     "cookie-parser": "~1.4.4",
@@ -28,7 +29,9 @@
     "morgan": "~1.9.1",
     "uuid": "^9.0.1"
   },
+
   "devDependencies": {
     "prisma": "^6.1.0"
   }
 }
+

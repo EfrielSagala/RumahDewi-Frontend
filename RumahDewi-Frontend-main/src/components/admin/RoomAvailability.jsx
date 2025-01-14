@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import rumah4 from "../../assets/images/rumah4.jpg";
 import { getRooms } from "../../Functions/API/fetchRooms";
@@ -8,6 +9,7 @@ import { updateRoomStatus } from "../../Functions/API/updateRoomStatus";
 const RoomAvailability = () => {
   const [rooms, setRooms] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetch = async () => {
@@ -100,6 +102,38 @@ const RoomAvailability = () => {
             </Card>
           ))
         )}
+
+        {/* Card tambahan untuk tambah baru */}
+        <Card
+          className="shadow mx-4"
+          style={{
+            minWidth: "18rem",
+            backgroundColor: "#2D7D46",
+            color: "#fff",
+            height: "100%",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/add-new-room")}
+        >
+          <Card.Body
+            className="d-flex flex-column justify-content-center align-items-center"
+            style={{ height: "100%" }}
+          >
+            <div
+              style={{
+                width: "60px",
+                height: "60px",
+                backgroundColor: "#fff",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span style={{ fontSize: "2rem", color: "#2D7D46" }}>+</span>
+            </div>
+          </Card.Body>
+        </Card>
       </div>
     </div>
   );
