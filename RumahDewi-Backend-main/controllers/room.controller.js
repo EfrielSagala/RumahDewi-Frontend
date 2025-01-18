@@ -56,7 +56,7 @@ const prisma = new PrismaClient();
 const { checkRooms } = require("../libs/checkrooms.libs");
 
 // Fungsi untuk mendapatkan semua kamar
-exports.getRooms = async (req, res, next) => {
+async function getRooms(req, res, next) {
   try {
     await checkRooms(req);
 
@@ -74,10 +74,10 @@ exports.getRooms = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
+}
 
 // Fungsi untuk mendapatkan kamar pengguna
-exports.getUserRoom = async (req, res, next) => {
+async function getUserRoom(req, res, next) {
   try {
     await checkRooms(req);
 
@@ -103,10 +103,10 @@ exports.getUserRoom = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
+}
 
 // Controller to add a room
-exports.addRoom = async (req, res, next) => {
+async function addRoom(req, res, next) {
   const { no_room, monthly_price, status } = req.body;
 
   // Check if required fields are provided
@@ -143,51 +143,14 @@ exports.addRoom = async (req, res, next) => {
       data: newRoom,
     });
   } catch (error) {
-    // Log error and send detailed message to the client
     console.error("Error adding room:", error);
     next(error);
   }
-};
+}
 
-
-// Fungsi untuk memperbarui status kamar
-exports.updateRoomStatus = async (req, res, next) => {
-  const { id } = req.params; // ID kamar dari parameter URL
-  const { status } = req.body; // Status baru dari body request
-
-  const validStatuses = ["TERSEDIA", "TERISI", "DIPESAN"]; // Status yang valid
-
-  try {
-    // Validasi status
-    if (!validStatuses.includes(status)) {
-      return res.status(400).json({
-        status: false,
-        message: "Status tidak valid.",
-      });
-    }
-
-    // Cari kamar berdasarkan ID
-    const room = await prisma.room.findUnique({ where: { id: parseInt(id, 10) } });
-
-    if (!room) {
-      return res.status(404).json({
-        status: false,
-        message: "Kamar tidak ditemukan.",
-      });
-    }
-
-    // Perbarui status kamar
-    const updatedRoom = await prisma.room.update({
-      where: { id: parseInt(id, 10) },
-      data: { status },
-    });
-
-    return res.status(200).json({
-      status: true,
-      message: "Status kamar berhasil diubah.",
-      data: updatedRoom,
-    });
-  } catch (error) {
-    next(error);
-  }
+// Export the functions
+module.exports = {
+  getRooms,
+  getUserRoom,
+  addRoom,
 };
