@@ -7,7 +7,6 @@ const AddRoom = () => {
   const [formData, setFormData] = useState({
     no_room: "",
     monthly_price: "",
-    status: "TERSEDIA", // Default status
   });
 
   const handleChange = (e) => {
@@ -24,7 +23,7 @@ const AddRoom = () => {
     const formDataToSend = {
       no_room: parseInt(formData.no_room, 10),
       monthly_price: parseInt(formData.monthly_price, 10),
-      status: formData.status,
+      status: "TERSEDIA", // Default status
     };
 
     try {
@@ -68,22 +67,6 @@ const AddRoom = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="status" className="form-label">
-            Status Kamar
-          </label>
-          <select
-            id="status"
-            name="status"
-            className="form-control"
-            value={formData.status}
-            onChange={handleChange}
-          >
-            <option value="TERSEDIA">TERSEDIA</option>
-            <option value="DIPESAN">DIPESAN</option>
-            <option value="TERISI">TERISI</option>
-          </select>
         </div>
         <button type="submit" className="btn btn-primary w-100">
           Tambah Kamar

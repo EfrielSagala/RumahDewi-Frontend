@@ -19,3 +19,27 @@
     min-height: auto;
   }
 }
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-contact svg {
+  margin-bottom: 15px; /* Jarak antara logo WhatsApp dan teks */
+}
+
+.footer-contact h3 {
+  margin-bottom: 20px; /* Jarak antara "Kontak Kami" dan logo WhatsApp */
+}
+
+.footer-contact span {
+  font-size: 18px;
+}
+
+.footer-contact .fw-bold {
+  font-size: 20px; /* Gaya tebal untuk nomor telepon */
+}
