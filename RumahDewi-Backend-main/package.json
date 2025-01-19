@@ -4,7 +4,6 @@
   "private": true,
   "prisma": {
     "seed": "node prisma/seeders/seed.js"
-    
   },
   "scripts": {
     "start": "node api/index.js",
@@ -29,9 +28,7 @@
     "morgan": "~1.9.1",
     "uuid": "^9.0.1"
   },
-
   "devDependencies": {
     "prisma": "^6.1.0"
   }
 }
-

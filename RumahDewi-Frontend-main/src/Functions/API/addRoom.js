@@ -3,8 +3,9 @@ import axios from "axios";
 // Assuming you already have the token available
 export const addRoom = async (roomData, token) => {
   try {
+    const token = localStorage.getItem("token"); // Mengambil token dari localStorage
     const response = await axios.post(
-      "http://localhost:4001/api/v1/rooms", 
+      "http://localhost:4002/api/v1/rooms", 
       roomData, 
       {
         headers: {

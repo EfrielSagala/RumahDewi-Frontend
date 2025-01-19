@@ -7,7 +7,7 @@ const AddRoom = () => {
   const [formData, setFormData] = useState({
     no_room: "",
     monthly_price: "",
-    status: "TERSEDIA",  // Default status
+    status: "TERSEDIA", // Default status
   });
 
   const handleChange = (e) => {
@@ -21,10 +21,16 @@ const AddRoom = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formDataToSend = {
+      no_room: parseInt(formData.no_room, 10),
+      monthly_price: parseInt(formData.monthly_price, 10),
+      status: formData.status,
+    };
+
     try {
-      const response = await addRoom(formData);
+      const response = await addRoom(formDataToSend);
       alert(response.message || "Kamar baru berhasil ditambahkan.");
-      navigate("/admin/rooms"); // Sesuaikan dengan rute
+      navigate("/admin/rooms");
     } catch (error) {
       console.error("Failed to add new room:", error);
       alert(error.message || "Terjadi kesalahan saat menambahkan kamar baru.");

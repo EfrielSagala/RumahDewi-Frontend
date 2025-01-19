@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/rooms": {
-        target: "http://localhost:4001", // Alamat backend
+        target: "http://localhost:4002", // Alamat backend
         changeOrigin: true,
       },
     },
