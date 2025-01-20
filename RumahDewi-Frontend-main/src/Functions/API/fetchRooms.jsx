@@ -25,3 +25,28 @@ export async function getUserRooms(token) {
     throw error;
   }
 }
+
+// export async function getRoomById(id, token) {
+//   try {
+//     const response = await axios.get(`${url}/rooms/${id}`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     return response;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+export async function getRoomById(id) {
+  try {
+    const response = await axios.get(`${url}/rooms/${id}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}

@@ -13,6 +13,7 @@ import { AdminPayments } from "./components/admin/admin-payments.jsx";
 import RoomAvailability from "./components/admin/RoomAvailability.jsx";
 import { FinancialReport } from "./components/admin/financial-report";
 import AddRoom from "./components/admin/AddRoom";
+import EditRoom from "./components/admin/EditRoom.jsx";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/admin/rooms" element={<MainTemplate component={RoomAvailability} />} />
         <Route path="/admin/financial" element={<MainTemplate component={FinancialReport} />} />
         <Route path="/add-new-room" element={<AddRoom />} />
+        <Route path="/admin/edit-room/:id" element={<EditRoom />} />
       </Routes>
     </BrowserRouter>
   );

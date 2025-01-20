@@ -4,7 +4,6 @@ import { Card } from "react-bootstrap";
 import rumah4 from "../../assets/images/rumah4.jpg";
 import { getRooms } from "../../Functions/API/fetchRooms";
 import { formatRupiah } from "../../Functions/libs/formatRupiah";
-import { updateRoomStatus } from "../../Functions/API/updateRoomStatus";
 
 const RoomAvailability = () => {
   const [rooms, setRooms] = useState();
@@ -26,53 +25,14 @@ const RoomAvailability = () => {
     fetch();
   }, []);
 
-  const handleStatusChange = async (roomId, currentStatus) => {
-    const newStatus = currentStatus === "TERSEDIA" ? "TERISI" : "TERSEDIA";
-    const confirmationMessage = `Apakah Anda yakin ingin mengubah status kamar ini menjadi ${newStatus}?`;
-
-    if (window.confirm(confirmationMessage)) {
-      try {
-        console.log(`Requesting update for room ${roomId} with status ${newStatus}`);
-        const response = await updateRoomStatus(roomId, newStatus);
-        console.log("Update response:", response);
-
-        setRooms((prevRooms) =>
-          prevRooms.map((room) =>
-            room.id === roomId ? { ...room, status: newStatus } : room
-          )
-        );
-        alert(`Status kamar berhasil diubah menjadi ${newStatus}.`);
-      } catch (error) {
-        console.error("Failed to update room status:", error.response?.data || error.message);
-        alert("Terjadi kesalahan saat mengubah status kamar.");
-      }
-    }
+  // Mengganti button status dengan button edit
+  const handleEditClick = (roomId) => {
+    navigate(`/admin/edit-room/${roomId}`);
   };
 
+  // Warna button edit (bisa disesuaikan)
   const getButtonClass = (status) => {
-    switch (status) {
-      case "TERSEDIA":
-        return "btn-success";
-      case "DIPESAN":
-        return "btn-warning";
-      case "TERISI":
-        return "btn-danger";
-      default:
-        return "btn-success";
-    }
-  };
-
-  const getButtonText = (status) => {
-    switch (status) {
-      case "TERSEDIA":
-        return "TERSEDIA";
-      case "DIPESAN":
-        return "DIPESAN";
-      case "TERISI":
-        return "TERISI";
-      default:
-        return "TERSEDIA";
-    }
+    return "btn-primary"; // Menggunakan warna primary untuk semua button edit
   };
 
   return (
@@ -93,10 +53,10 @@ const RoomAvailability = () => {
                 <Card.Title className="fs-4 fw-bold">Kamar Nomor {room.no_room}</Card.Title>
                 <p className="fs-5 my-4">{formatRupiah(room.monthly_price)}/Bulan</p>
                 <button
-                  className={`btn ${getButtonClass(room.status)} fw-bold`}
-                  onClick={() => handleStatusChange(room.id, room.status)}
+                  className={`btn ${getButtonClass()} fw-bold`}
+                  onClick={() => handleEditClick(room.id)}
                 >
-                  {getButtonText(room.status)}
+                  Edit
                 </button>
               </Card.Body>
             </Card>
