@@ -5,7 +5,7 @@ export const addRoom = async (roomData, token) => {
   try {
     const token = localStorage.getItem("token"); // Mengambil token dari localStorage
     const response = await axios.post(
-      "http://localhost:4002/api/v1/rooms", 
+      "https://rumah-dewi-backend-delta.vercel.app/api/v1/rooms", 
       roomData, 
       {
         headers: {

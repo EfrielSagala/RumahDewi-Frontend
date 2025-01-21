@@ -8,7 +8,7 @@ export const editRoom = async (id, roomData, token) => {
 
     // Send PUT request to update room data
     const response = await axios.put(
-      `http://localhost:4002/api/v1/rooms/${id}`, // Replace with your API URL
+      `https://rumah-dewi-backend-delta.vercel.app/api/v1/rooms/${id}`, // Replace with your API URL
       roomData, // Data to update the room
       {
         headers: {
