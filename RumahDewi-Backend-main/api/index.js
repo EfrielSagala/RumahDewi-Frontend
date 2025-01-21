@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-  origin: ['https://rumah-dewi-frontend.vercel.app/'],
+  origin: ['https://rumah-dewi-frontend.vercel.app'],
   methods: 'GET, POST, PUT, DELETE',
   allowedHeaders: 'Content-Type, Authorization'
 }));
