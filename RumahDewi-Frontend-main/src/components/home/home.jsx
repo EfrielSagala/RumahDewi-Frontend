@@ -33,7 +33,7 @@ export const Home = ({ user }) => {
                 <li>30 menit menuju kota Denpasar.</li>
               </ul>
               <a href="https://maps.app.goo.gl/gEos84YsTZEUzmff9" target="_blank" className="text-decoration-none fw-bold text-right">
-                Lihat di GoogleMaps &raquo;
+                Lihat di GoogleMaps »
               </a>
               <hr className="text-success w-50" />
               <a className="btn btn-success fw-bold fs-4" href={user?.role === "ADMIN" ? "/admin/rooms" : "/rent"}>
@@ -94,12 +94,12 @@ export const Home = ({ user }) => {
       {/* CARD */}
       <h1 className="mt-5 fs-1 fw-bold text-center">Fitur Website</h1>
       <div className="w-100  p-2 p-lg-5">
-        <div className={`w-100 text-center d-flex align-items-center overflow-x-auto bg-success-subtle pb-3 ${user ? "" : "card-home"}`}>
+         <div className={`w-100 text-center d-flex align-items-stretch overflow-x-auto bg-success-subtle pb-3 ${user ? "" : "card-home"}`}>
           {user?.role !== "ADMIN" ? (
             <>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="200px" height="200px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
+               <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="120px" height="120px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <path d="M589.3 260.9v30H371.4v-30H268.9v513h117.2v-304l109.7-99.1h202.1V260.9z" fill="#e1ffe2" />
                     <path d="M516.1 371.1l-122.9 99.8v346.8h370.4V371.1z" fill="#e1ffe2" />
                     <path d="M752.7 370.8h21.8v435.8h-21.8z" fill="#44b156" />
@@ -116,16 +116,16 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Pelaporan Masalah</Card.Title>
-                  <Card.Text>Pelaporan untuk penghuni kos jika ada kendala yang perlu disampaikan kepada pemilik rumah kos.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Pelaporan Masalah</Card.Title>
+                  <Card.Text className="text-center">Pelaporan untuk penghuni kos jika ada kendala yang perlu disampaikan kepada pemilik rumah kos.</Card.Text>
                   <a href={user ? (user?.role === "USER" ? "https://forms.gle/JEL88wRmr75YEt959" : "") : "/login"} className={`btn btn-success fw-bold ${user?.role === "ADMIN" ? "invisible" : ""}`}>
                     Klik Disini
                   </a>
                 </Card.Body>
               </Card>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="150px" height="150px" viewBox="-1.5 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" className="mt-4">
+              <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="100px" height="100px" viewBox="-1.5 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" className="mt-4">
                     <title>wallet</title>
                     <desc>Created with Sketch Beta.</desc>
                     <defs></defs>
@@ -141,16 +141,16 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Bayar Sewa Bulanan</Card.Title>
-                  <Card.Text>Untuk penghuni rumah kost, silahkan bayarkan sewa bulanan anda disini.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Bayar Sewa Bulanan</Card.Title>
+                  <Card.Text className="text-center">Untuk penghuni rumah kost, silahkan bayarkan sewa bulanan anda disini.</Card.Text>
                   <a href={user ? (user?.role === "USER" ? "/payments" : "") : "/login"} className={`btn btn-success fw-bold ${user?.role === "ADMIN" ? "invisible" : ""}`}>
                     Klik Disini
                   </a>
                 </Card.Body>
               </Card>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="140px" height="140px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
+              <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                    <svg width="90px" height="90px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
                     <path
                       d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z"
                       fill="#44b156"
@@ -164,8 +164,8 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Nomor CS</Card.Title>
-                  <Card.Text>Nomor CS Rumah Dewi untuk calon penyewa yang ingin menanyakan informasi lebih lanjut mengenai kos Rumah Dewi.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Nomor CS</Card.Title>
+                  <Card.Text className="text-center">Nomor CS Rumah Dewi untuk calon penyewa yang ingin menanyakan informasi lebih lanjut mengenai kos Rumah Dewi.</Card.Text>
                   <button
                     className="btn btn-success fw-bold"
                     onClick={() => {
@@ -176,9 +176,9 @@ export const Home = ({ user }) => {
                   </button>
                 </Card.Body>
               </Card>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="150px" height="150px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
+              <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
                     <path d="M2 22H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M2 11H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M3.5 21.5V11.5" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
@@ -190,8 +190,8 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Pemesanan Kamar</Card.Title>
-                  <Card.Text>Fitur ini berisikan kumpulan kamar yang tersedia untuk dipesan.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Pemesanan Kamar</Card.Title>
+                  <Card.Text className="text-center">Fitur ini berisikan kumpulan kamar yang tersedia untuk dipesan.</Card.Text>
                   <a href="/rent" className="btn btn-success fw-bold">
                     Klik Disini
                   </a>
@@ -200,9 +200,9 @@ export const Home = ({ user }) => {
             </>
           ) : (
             <>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="150px" height="150px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
+               <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
                     <path d="M2 22H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M2 11H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M3.5 21.5V11.5" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
@@ -214,16 +214,16 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Ketersediaan Kamar</Card.Title>
-                  <Card.Text>Fitur untuk mengubah status ketersediaan kamar kos.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Ketersediaan Kamar</Card.Title>
+                  <Card.Text className="text-center">Fitur untuk mengubah status ketersediaan kamar kos.</Card.Text>
                   <a href="/admin/rooms" className="btn btn-success fw-bold">
                     Klik Disini
                   </a>
                 </Card.Body>
               </Card>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="150px" height="150px" viewBox="-1.5 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" className="mt-4">
+              <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="100px" height="100px" viewBox="-1.5 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" className="mt-4">
                     <title>wallet</title>
                     <desc>Created with Sketch Beta.</desc>
                     <defs></defs>
@@ -239,16 +239,16 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Konfirmasi Pembayaran</Card.Title>
-                  <Card.Text>Untuk Mengkonfirmasi Pembayaran dari User</Card.Text>
-                  <a href={user ? (user?.role === "ADMIN" ? "/admin/payments" : "") : "/login"} className={`btn btn-success fw-bold mt-3 ${user?.role === "USER" ? "invisible" : ""}`}>
+                  <Card.Title className="fs-5 fw-bold text-center">Konfirmasi Pembayaran</Card.Title>
+                  <Card.Text className="text-center">Untuk Mengkonfirmasi Pembayaran dari User</Card.Text>
+                   <a href={user ? (user?.role === "ADMIN" ? "/admin/payments" : "") : "/login"} className={`btn btn-success fw-bold mt-3 ${user?.role === "USER" ? "invisible" : ""}`}>
                     Klik Disini
                   </a>
                 </Card.Body>
               </Card>
-              <Card className="shadow mx-4 card-style">
-                <div style={{ height: "200px" }}>
-                  <svg width="150px" height="150px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
+              <Card className="shadow mx-3 card-style d-flex flex-column" style={{ width: '20rem' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: "150px" }}>
+                  <svg width="100px" height="100px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-4">
                     <path d="M2 11H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M2 16H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
                     <path d="M2 21H22" stroke="#44b156" stroke-width="1.5" stroke-linecap="round"/>
@@ -259,8 +259,8 @@ export const Home = ({ user }) => {
                   </svg>
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-                  <Card.Title className="fs-3 fw-bold">Laporan Keuangan</Card.Title>
-                  <Card.Text>Fitur untuk melihat laporan keuangan dari pembayaran sewa kos.</Card.Text>
+                  <Card.Title className="fs-5 fw-bold text-center">Laporan Keuangan</Card.Title>
+                  <Card.Text className="text-center">Fitur untuk melihat laporan keuangan dari pembayaran sewa kos.</Card.Text>
                   <a href="/admin/financial" className="btn btn-success fw-bold">
                     Klik Disini
                   </a>
