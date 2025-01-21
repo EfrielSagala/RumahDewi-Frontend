@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174'],
+  origin: ['https://rumah-dewi-frontend.vercel.app/'],
   methods: 'GET, POST, PUT, DELETE',
   allowedHeaders: 'Content-Type, Authorization'
 }));

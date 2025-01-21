@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 async function RoomSeeder() {
   return new Promise(async (resolve, reject) => {
     let data = [];
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 11; i++) {
       data.push({
         no_room: i,
         monthly_price: 1200000,
